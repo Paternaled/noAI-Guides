@@ -1,0 +1,53 @@
+import sqlite3
+
+def table_create() -> None:
+    con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
+    cursor = con.cursor()
+
+    cursor.execute("""CREATE TABLE ToDoListT (
+        ToDoListID INTEGER PRIMARY KEY, 
+        Description TEXT, 
+        IsActive BOOLEAN DEFAULT 1, 
+        DateCreated timestamp, 
+        DateUpdated timestamp)
+        """)
+
+    cursor = con.cursor()
+    print("The table was created!")
+
+def record_add(Description):
+    con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
+    con.execute("INSERT INTO ")
+
+    cursor = con.cursor()
+    print("The record was added to the table!")
+
+def record_edit(todolist_id):
+    con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
+    cursor = con.cursor()
+
+    con.close()
+    print("The record was added to the table!")
+
+def record_lookup(todolist_description):
+    con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
+    cursor = con.cursor()
+
+    result = cursor.execute("SELECT * FROM ToDoListT WHERE Description=(?)", todolist_description)
+    result.fetchall()
+
+    if result != None:
+        con.close()
+        print("A record was found in the table!")
+        return result
+    else:
+        con.close()
+        print("The record was not found in the table!")
+    
+
+def record_delete(todolist_id):
+    con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
+    cursor = con.cursor()
+
+    print("The record was removed from the table!")
+    con.close()

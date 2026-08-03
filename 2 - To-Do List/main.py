@@ -1,5 +1,4 @@
 
-import to_do_list
 
 def print_menu() -> None:
     print("1 - Add Task")
