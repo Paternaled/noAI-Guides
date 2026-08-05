@@ -16,12 +16,12 @@ def run_startup() -> list:
 def table_list():
     tables = []
 
-    tables.append("TagT")
-    tables.append("ClanT")
-    tables.append("VillageT")
-    tables.append("TraitT")
-    tables.append("TaiStyleT")
-    tables.append("ElementT")
-    tables.append("ClanT")
+    tables.append(("TagT",))
+    tables.append(("ClanT",))
+    tables.append(("VillageT",))
+    tables.append(("TraitT",))
+    tables.append(("TaiStyleT",))
+    tables.append(("ElementT",))
+    tables.append(("ClanT",))
 
     return tables
