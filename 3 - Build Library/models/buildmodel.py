@@ -1,4 +1,4 @@
-import database as __database
+import database.database as __database
 
 def run_startup():
     print("buildmodel - I'm running!")

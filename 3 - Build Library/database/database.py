@@ -1,4 +1,5 @@
 import sqlite3
+import utility.utility as utility
 
 def table_create(SQL: str) -> bool:
     con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
@@ -13,12 +14,15 @@ def table_create(SQL: str) -> bool:
     finally:
         con.close()
 
-def table_exists(SQL: str, data: tuple) -> bool:
+def table_exists(table_name: str) -> bool:
     con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
     cur = con.cursor()
 
+    table_name_converted: tuple = utility.convert_tuple(table_name)
+    SQL = "SELECT name FROM sqlite_master WHERE name=(?)"
+
     try: 
-       result = cur.execute(SQL, data)
+       result = cur.execute(SQL, table_name_converted)
        result_peek = result.fetchone()
     except:
         return False
@@ -30,12 +34,14 @@ def table_exists(SQL: str, data: tuple) -> bool:
     finally:
         con.close()
 
-def record_add(SQL: str, data: tuple) -> bool:
+def record_add(SQL: str, data: str) -> bool:
     con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
     cur = con.cursor()
 
+    data_converted: tuple = utility.convert_tuple(data)
+
     try: 
-        cur.execute(SQL, data)
+        cur.execute(SQL, data_converted)
     except:
         return False
     else:
@@ -44,12 +50,14 @@ def record_add(SQL: str, data: tuple) -> bool:
     finally:
         con.close()
 
-def record_edit(SQL: str, data: tuple) -> bool:
+def record_edit(SQL: str, data: str) -> bool:
     con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
     cur = con.cursor()
 
+    data_converted: tuple = utility.convert_tuple(data)
+
     try: 
-        cur.execute(SQL, data)
+        cur.execute(SQL, data_converted)
     except:
         return False
     else:
@@ -58,12 +66,14 @@ def record_edit(SQL: str, data: tuple) -> bool:
     finally:
         con.close()
 
-def record_delete(SQL: str, data: tuple) -> bool:
+def record_delete(SQL: str, data: str) -> bool:
     con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
     cur = con.cursor()
 
+    data_converted: tuple = utility.convert_tuple(data)
+
     try: 
-        con.execute(SQL, data)
+        con.execute(SQL, data_converted)
     except:
         return False
     else:
@@ -72,12 +82,14 @@ def record_delete(SQL: str, data: tuple) -> bool:
     finally:
         con.close()
 
-def record_fetch(SQL: str, data: tuple) -> list:
+def record_fetch(SQL: str, data: str) -> list:
     con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
     cur = con.cursor()
+
+    data_converted: tuple = utility.convert_tuple(data)
 
     try:
-        result = cur.execute(SQL, data)
+        result = cur.execute(SQL, data_converted)
     except:
         result = None
     else:
@@ -86,12 +98,14 @@ def record_fetch(SQL: str, data: tuple) -> list:
         con.close()
         return result_peek
 
-def record_fetch_all(SQL: str, data: tuple) -> list:
+def record_fetch_all(SQL: str, data: str) -> list:
     con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
     cur = con.cursor()
 
+    data_converted: tuple = utility.convert_tuple(data)
+
     try:
-        result = cur.execute(SQL, data)
+        result = cur.execute(SQL, data_converted)
     except:
         result = None
     else:
