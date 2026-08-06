@@ -10,7 +10,7 @@ def run_startup() -> list:
         if(__database.table_exists(table_dict[table]["name"]) == False):
             __database.table_create(table_dict[table]["create"])
             if(__database.table_exists(table_dict[table]["name"]) == False): 
-                result.append("Table creation - Failed")
+                result.append("Table Creation - Failed")
             else:
                 result.append("Table Created")
         else:
