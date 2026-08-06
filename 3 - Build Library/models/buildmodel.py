@@ -2,10 +2,7 @@ import database.database as __database
 
 def run_startup() -> list:
     result = []
-
-    # TODO - Testing table_exists is done, now I need to create a function that...
-    # ...creates a table when it doesn't exist.
-    
+ 
     for table in table_dict:
         if(__database.table_exists(table_dict[table]["name"]) == False):
             __database.table_create(table_dict[table]["create"])

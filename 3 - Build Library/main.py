@@ -1,21 +1,18 @@
 from controller.controller import Controller
 
 
-#Starting the program
-controller = Controller
+def main():
 
-#Reachout to the controller to check for all of the tables and configuration files. 
-#Tell the models to create their tables if they don't exist
-#The controller checks to make sure everything ran correctly and passes the information to the view
-controller.run_startup()
+#Reachout to the controller to check for all of the tables and configuration files
+    controller = Controller
+    controller.run_startup()
 
+    running :bool = True
 
-#Start the main loop of the progran
+    while (running):
 
+        controller.loop_main()
 
-#contact the controller for information through the run of the program
+        running = False
 
-
-
-#end the loop and exit the program
-
+main()
