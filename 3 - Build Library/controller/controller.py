@@ -1,6 +1,7 @@
 
 import models.buildmodel as buildmodel
 import models.helperdatamodel as helperdatamodel
+
 import view.view as view
 
 class Controller():
@@ -23,6 +24,7 @@ class Controller():
 
         view.print_press_continue()
         view.clear_screen()
+
 
     def loop_main() -> None:
 
@@ -56,7 +58,7 @@ class Controller():
                 view.print_press_continue()
 
 
-    def loop_helperdata() -> None:
+    def loop_helperdata(self) -> None:
 
         view.clear_screen()
 
@@ -77,14 +79,18 @@ class Controller():
             menu_input: int = view.request_input_int()
 
             if menu_input == 1:
-                view.print_new_feature()
+                #TODO - This function needs to be finished -Adds values to table 
+                Controller.add_values()
+
                 view.print_press_continue()
 
             elif menu_input == 2:
+                #TODO - Add a function to edit information in the selected table
                 view.print_new_feature()
                 view.print_press_continue()
 
             elif menu_input == 3:
+                #TODO - Add a function to delete information from the selected table
                 view.print_new_feature()
                 view.print_press_continue()
                 
@@ -96,3 +102,7 @@ class Controller():
             else:
                 view.print_invalid_input()
                 view.print_press_continue()
+
+
+    def add_values():
+        pass

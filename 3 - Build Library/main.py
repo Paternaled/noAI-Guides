@@ -1,17 +1,17 @@
-from controller.controller import Controller
+from controller.maincontroller import MainController
 
 
 def main():
 
 #Reachout to the controller to check for all of the tables and configuration files
-    controller = Controller
-    controller.run_startup()
+    main_controller = MainController
+    main_controller.run_startup()
 
     running :bool = True
 
     while (running):
 
-        controller.loop_main()
+        main_controller.loop_main()
 
         running = False
 

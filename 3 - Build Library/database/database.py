@@ -34,11 +34,11 @@ def table_exists(table_name: str) -> bool:
     finally:
         con.close()
 
-def record_add(SQL: str, data: str) -> bool:
+def record_add(SQL: str, data: list) -> bool:
     con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
     cur = con.cursor()
 
-    data_converted: tuple = utility.convert_tuple(data)
+    data_converted: tuple = utility.convert_tuple_many(data)
 
     try: 
         cur.execute(SQL, data_converted)
@@ -50,11 +50,11 @@ def record_add(SQL: str, data: str) -> bool:
     finally:
         con.close()
 
-def record_edit(SQL: str, data: str) -> bool:
+def record_edit(SQL: str, data: list) -> bool:
     con = sqlite3.connect(r"noAI-Guides\3 - Build Library\main.db")
     cur = con.cursor()
 
-    data_converted: tuple = utility.convert_tuple(data)
+    data_converted: tuple = utility.convert_tuple_many(data)
 
     try: 
         cur.execute(SQL, data_converted)

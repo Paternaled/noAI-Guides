@@ -5,7 +5,7 @@ def run_startup() -> list:
  
     for table in table_dict:
         if(__database.table_exists(table_dict[table]["name"]) == False):
-            __database.table_create(table_dict[table]["create"])
+            __database.table_create(table_dict[table]["sql_create"])
             if(__database.table_exists(table_dict[table]["name"]) == False): 
                 result.append("Table Creation - Failed")
             else:
@@ -19,7 +19,9 @@ def run_startup() -> list:
 table_dict = {
     "BuildPlanT":{
         "name":"BuildPlanT",
-        "create":("""CREATE TABLE BuildPlanT (
+        "values":["ID","Description","Notes","IsLegacy","IsActive","DateCreated","DateUpdated"],
+        "values_required":["Description","Notes","IsLegacy","IsActive","DateUpdated"],
+        "sql_create":("""CREATE TABLE BuildPlanT (
                     ID INTEGER PRIMARY KEY UNIQUE, 
                     Description TEXT, 
                     Notes TEXT,
@@ -28,11 +30,15 @@ table_dict = {
                     DateCreated TEXT DEFAULT CURRENT_TIMESTAMP,
                     DateUpdated TEXT DEFAULT CURRENT_TIMESTAMP)
                 """),
-        "values":["ID","Description","Notes","IsLegacy","IsActive","DateCreated","DateUpdated"],
+        "sql_add":["""INSERT INTO BuildPlanT (
+                    Description, 
+                    Notes) VALUES (?, ?)"""],
     }, 
     "BuildT":{
         "name":"BuildT",
-        "create":("""CREATE TABLE BuildT (
+        "values":["ID","BuildPlanID","Description","VerisonNumber","Notes","IsLegacy","IsActive","DateCreated","DateUpdated"],
+        "values_required":["BuildPlanID","Description","VerisonNumber","Notes","IsLegacy","IsActive","DateUpdated"],
+        "sql_create":("""CREATE TABLE BuildT (
                     ID INTEGER PRIMARY KEY UNIQUE,
                     BuildPlanID INTEGER, 
                     Description TEXT, 
@@ -44,11 +50,17 @@ table_dict = {
                     DateUpdated TEXT DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(BuildPlanID) REFERENCES BuildPlanT(ID))
                 """),
-        "values":["ID","BuildPlanID","Description","VerisonNumber","Notes","IsLegacy","IsActive","DateCreated","DateUpdated"],
+        "sql_add":["""INSERT INTO BuildT (
+                    BuildPlanID, 
+                    Description, 
+                    VerisonNumber, 
+                    Notes) VALUES (?, ?, ?, ?)"""],
     },
     "BuildDetailT":{
         "name":"BuildDetailT",
-        "create":("""CREATE TABLE BuildDetailT (
+        "values":["ID","ClanID","PrimaryTraitID","SecondaryTraitID","TaiStyleOneID","TaiStyleTwoID","ProfessionOneID","ProfessionTwoID","TransformationID","LegendarySwordID","Description","Physical","Capacity","Control","Notes","IsProfessional","IsLegacy","IsActive","DateCreated","DateUpdated"],
+        "values_required":["ClanID","PrimaryTraitID","SecondaryTraitID","TaiStyleOneID","TaiStyleTwoID","ProfessionOneID","ProfessionTwoID","TransformationID","LegendarySwordID","Description","Physical","Capacity","Control","Notes","IsProfessional","IsLegacy","IsActive","DateUpdated"],
+        "sql_create":("""CREATE TABLE BuildDetailT (
                     ID INTEGER PRIMARY KEY UNIQUE,
                     BuildID INTEGER,
                     ClanID INTEGER,
@@ -80,7 +92,23 @@ table_dict = {
                     FOREIGN KEY(ProfessionTwoID) REFERENCES ProfessionT(ID),
                     FOREIGN KEY(TransformationID) REFERENCES TransformationT(ID),
                     FOREIGN KEY(LegendarySwordID) REFERENCES LegendarySwordT(ID))
-                 """),
-        "values":["ID","ClanID","PrimaryTraitID","SecondaryTraitID","TaiStyleOneID","TaiStyleTwoID","ProfessionOneID","ProfessionTwoID","TransformationID","LegendarySwordID","Description","Physical","Capacity","Control","Notes","IsProfessional","IsLegacy","IsActive","DateCreated","DateUpdated"],
+                 """),       
+        "sql_add":["""INSERT INTO BuildDetailT (
+                    BuildID,
+                    ClanID,
+                    PrimaryTraitID,
+                    SecondaryTraitID,
+                    TaiStyleOneID,
+                    TaiStyleTwoID,
+                    ProfessionOneID,
+                    ProfessionTwoID,
+                    TransformationID, 
+                    LegendarySwordID, 
+                    Description,
+                    Physical,
+                    Capacity,
+                    Control, 
+                    Notes,
+                    IsProfessional) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""],
     },
 }
