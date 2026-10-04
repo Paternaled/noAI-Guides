@@ -40,8 +40,8 @@ def request_input_int() -> int:
         result = int(result)
     except:
         result = None
-    finally:
-        return result
+    
+    return result
 
 def request_input_str() -> str:
     result = input(">")
@@ -51,8 +51,8 @@ def request_input_str() -> str:
         result = str(result)
     except:
         result = None
-    finally:
-        return result
+    
+    return result
 
 def print_hello_world() -> None:
     print("Hello World!")
