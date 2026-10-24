@@ -1,0 +1,79 @@
+To-Do List:
+
+    General:
+    [~] Create database.py files and functions
+    [~] Create models(s)
+    [~] Create controller(s)
+    [~] Create the main program loop
+    [ ] Create a way to backup the SQLite database
+    [ ] Create a way to save and load SQL strings that the models use to interact with each table
+    [ ] Create a way to save and load default values for the small tables (ie clans, village, etc.)
+    [ ] Create a tkinter interface
+    [ ] Create testing suite for the functions, classes, modules, etc.
+
+    Main:
+    [ ] Create the main loop that interacts with the controller
+    [ ] 
+    [ ] 
+    [ ] 
+    [ ] 
+    [ ] 
+
+    View:
+    [ ] Create functions that the controller can call to create a CLI interface
+        [~] Print out the main menu
+            [~] Create menu options (Start one at a time)
+                [ ] Helper Data
+                    [ ] Add a menu to interact with the helper data
+                    [ ] Add Helper Data to tables
+                    [ ] Remove Helper Data from tables
+                    [ ] Add Helper
+                [ ] Build Plans
+                    [ ] Add "Build Plans" to the table
+                    [ ] Remove "Build Plans" from the table
+                [ ] Builds
+                    [ ] Add "Builds" from table
+                    [ ] Remove "Builds" from table
+                [ ] Add "Build Details"
+                    [ ] Add "Build Details" from table
+                    [ ] Remove "Build Details" from table
+                [ ] ASD
+            [ ] 
+            [ ]  
+        [X] Clear the interface
+        [ ] Handle input
+        [ ] Create functions of loops to input information into the tables
+        [ ] Create a "dev" menu to input some values into the Helper Data tables
+        [ ] 
+        [ ] 
+    [ ] Create a way to call different interfaces (CLI, Tkinter, etc.)
+    [ ] 
+
+    Controller:
+    [~] Creating the startup sequence
+        [~] Creating the startup sequence in the models
+        [ ] Create a loop/function to interact with all models
+    [ ] 
+    [ ] 
+    [ ] 
+    [ ] 
+
+    Model(s):
+    [~] Creating the startup sequence function for each model
+        [X] Create a way to detect if a table doesn't exist (in a loop)
+        [X] Create a function/loop to create missing tables
+            [X] Create a way to load "create table" SQL strings for each table
+            [ ] Create a way to save and load the SQL strings for each table (may save for later)
+        [ ] 
+        [ ] 
+        [ ] 
+        [ ] 
+
+    Database 
+    [X] Create functions to interact with the SQLite database that the models can call
+        [X] Fix the weird issues with the functions (Getting errors that more values are being pass) 
+            Solution: Read the docs lol, I needed to pass tuples into the (?) portion of the SQL statements. I was trying to pass values.
+    [X] Make a function to convert data into tuples instead of trying to feed in tuples
+    [ ] 
+    [ ] 
+    [ ] Create tests for the functions

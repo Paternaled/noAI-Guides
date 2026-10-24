@@ -18,7 +18,7 @@ class BuildPlan:
 @dataclass
 class Build:
     BuildID: int
-    BuildPlanID: int
+    BuildPlanID: BuildPlan
     Description: str
     VerisonNumber: str
     Notes: str
